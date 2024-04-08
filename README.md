@@ -1,0 +1,2 @@
+# petalinux
+Zynq Petalinux 
