@@ -18,3 +18,12 @@ $ sudo service docker start
 $ sudo groupadd docker
 $ sudo usermod -aG docker $USER
 
+#-- petalinux example case
+
+petalinux-create --type project --template zynq --name ax_peta
+cd ax_peta/
+petalinux-config --get-hw-description /mnt/proj.sdk/
+petalinux-config -c kernel
+petalinux-config -c rootfs
+petalinux-build
+petalinux-package --boot --fsbl ./images/linux/zynq_fsbl.elf --fpga --u-boot --force
