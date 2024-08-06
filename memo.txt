@@ -1,28 +1,33 @@
-#-- WSL Install
+# #-- WSL Install
+# 
+# # https://learn.microsoft.com/zh-cn/windows/wsl/install-manual
+# # curl.exe -L -o ubuntu-2004.appx https://aka.ms/wslubuntu2004
+# 
+# # PowerShell
+# # Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu.appx -UseBasicParsing
+# # Add-AppxPackage .\app_name.appx
+# 
+# # https://hackmd.io/@CynthiaChuang/Install-Docker-in-WSL2
+# 
+# #-- Docker Install
+# 
+# $ curl -fsSL https://get.docker.com -o get-docker.sh
+# $ sudo sh get-docker.sh
+# $ sudo service docker start
+# 
+# $ sudo groupadd docker
+# $ sudo usermod -aG docker $USER
+# 
+# #-- Petalinux Container Invoke
+# 
+# $ ./run.sh
+# 
 
-# https://learn.microsoft.com/zh-cn/windows/wsl/install-manual
-# curl.exe -L -o ubuntu-2004.appx https://aka.ms/wslubuntu2004
-
-# PowerShell
-# Invoke-WebRequest -Uri https://aka.ms/wslubuntu2004 -OutFile Ubuntu.appx -UseBasicParsing
-# Add-AppxPackage .\app_name.appx
-
-# https://hackmd.io/@CynthiaChuang/Install-Docker-in-WSL2
-
-#-- Docker Install
-
-$ curl -fsSL https://get.docker.com -o get-docker.sh
-$ sudo sh get-docker.sh
-$ sudo service docker start
-
-$ sudo groupadd docker
-$ sudo usermod -aG docker $USER
-
-#-- petalinux example case
+#-- petalinux instruction flow template
 
 petalinux-create --type project --template zynq --name ax_peta
 cd ax_peta/
-petalinux-config --get-hw-description /mnt/proj.sdk/
+petalinux-config --get-hw-description /mnt/sdk/
 petalinux-config -c kernel
 petalinux-config -c rootfs
 petalinux-build
